@@ -1,2 +1,2 @@
 # levity-validator
-Javascript String Validator
+Javascript Data Validation Library
