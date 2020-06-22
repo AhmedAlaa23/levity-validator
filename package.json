@@ -1,10 +1,10 @@
 {
   "name": "levity-validator",
   "version": "0.1.0",
-  "description": "Javascript String Validator",
-  "main": "index.js",
+  "description": "Javascript Data Validator",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\""
   },
   "repository": {
     "type": "git",
@@ -16,6 +16,6 @@
     "url": "https://github.com/AhmedAlaa23/levity-validator/issues"
   },
   "homepage": "https://github.com/AhmedAlaa23/levity-validator#readme",
-  "keywords": ["validation","validator","validate","sanitization","sanitize"],
+  "keywords": ["validation","validator","validate"],
   "type": "module"
 }
