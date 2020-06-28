@@ -148,8 +148,8 @@ options defaults: options={min: null, max: null}
 
 **check if string is empty**
 
-min (int): default: 0
-max (int): default: null (for any max length)
+min (int): default: 0<br>
+max (int): default: null (for any max length)<br>
 
 ## Operations
 
@@ -157,7 +157,8 @@ max (int): default: null (for any max length)
 
 **examples:**
 
-```validator.multiple(validator.isAlphaNum("test123"), validator.isAlpha("test")); // true
+```
+validator.multiple(validator.isAlphaNum("test123"), validator.isAlpha("test")); // true
 ```
 
 <hr>
@@ -175,7 +176,8 @@ max (int): default: null (for any max length)
 
 **examples:**
 
-```validator.validate( {valid: validator.isAlpha, data: {value: "Test", options: {min: 3}}, name: 'firstName', required: true} );
+```
+validator.validate( {valid: validator.isAlpha, data: {value: "Test", options: {min: 3}}, name: 'firstName', required: true} );
 // {status: true}
 
 validator.validate( {valid: validator.isAlpha, data: {value: "David3", name: 'FirstName', required: true} );
