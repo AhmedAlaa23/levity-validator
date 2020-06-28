@@ -9,8 +9,7 @@
 $ npm install levity-validator
 ```
 
-```
-import validator from 'levity-validator';
+```import validator from 'levity-validator';
 
 let isValid = validator.isAlphaNum("Test1234");
 
@@ -28,7 +27,7 @@ console.log(isValid); // true
 
 ## Validators
 
-`
+
 **isAlpha(str [,options])**
 
 **only letters**
@@ -36,9 +35,9 @@ console.log(isValid); // true
 options defaults: options={min: 0, max: 10000, locale: 'en-US', case: '*'} 
 locale: ['en-US','all'] - all for any letters in any language
 case: ['upper','lower','*'] - * for incase sensitive
-`
 
-`
+<hr>
+
 **isAlphaNum(str [,options])**
 
 **only letters and numbers**
@@ -46,4 +45,3 @@ case: ['upper','lower','*'] - * for incase sensitive
 options defaults: options={min: 0, max: 10000, locale: 'en-US', case: '*'} 
 locale: ['en-US','all'] - all for any letters in any language
 case: ['upper','lower','*'] - * for incase sensitive
-`
