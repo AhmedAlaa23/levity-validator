@@ -45,7 +45,6 @@ validator.errMsgs.isInvalid = '$ Is Wrong !';
 let validate = validator.validate( {valid: validator.isAlpha, data: {value: "Test", options: {min: 3}}, name: 'firstName', required: true} );
 console.log(validate); // true
 
-
 // // ====================== To-DO
 
 // let isAllValid = validator.combine("test", {valid: validator.isAlphaNum}, {valid: validator.isAlpha, options: {min: 3}} );
