@@ -16,6 +16,14 @@ console.log(isValidPattern); // true
 let isValidText = validator.isText("Hello اهلا 😀", {min: 2});
 console.log('isValidText', isValidText); // true
 
+// is one of array values (case sensitive)
+let isOneOf = validator.isOneOf("Pewdiepie", ['Casey','David','Pewdiepie']);
+console.log('isOneOf', isOneOf); // true
+
+// just like === operator
+let isEqualTo = validator.isEqualTo('David', 'David');
+console.log('isEqualTo', isEqualTo); // true
+
 // ========================= high order validators
 
 let isValidUsername = validator.isUsername("David_123");

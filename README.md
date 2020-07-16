@@ -9,7 +9,8 @@
 $ npm install levity-validator
 ```
 
-```import validator from 'levity-validator';
+```javascript
+import validator from 'levity-validator';
 
 let isValid = validator.isAlphaNum("Test1234");
 
@@ -32,7 +33,7 @@ console.log(isValid); // true
 **only letters**
 
 options defaults: options={min: 0, max: 10000, locale: 'en-US', case: '*'}<br>
-locale: ['en-US','all'] - all for any letters in any language<br>
+locale: ['en-US','*'] - * for any letters in any language<br>
 case: ['upper','lower','*'] - * for upper and lower case<br>
 
 <hr>
@@ -42,7 +43,7 @@ case: ['upper','lower','*'] - * for upper and lower case<br>
 **only letters and numbers**
 
 options defaults: options={min: 0, max: 10000, locale: 'en-US', case: '*'}<br>
-locale: ['en-US','all'] - all for any letters in any language<br>
+locale: ['en-US','*'] - * for any letters in any language<br>
 case: ['upper','lower','*'] - * for upper and lower case<br>
 
 <hr>
@@ -52,7 +53,7 @@ case: ['upper','lower','*'] - * for upper and lower case<br>
 **only letters and numbers and spaces**
 
 options defaults: options={min: 0, max: 10000, locale: 'en-US', case: '*'}<br>
-locale: ['en-US','all'] - all for any letters in any language<br>
+locale: ['en-US','*'] - * for any letters in any language<br>
 case: ['upper','lower','*'] - * for upper and lower case<br>
 
 <hr>
@@ -144,6 +145,28 @@ options defaults: options={min: null, max: null}
 
 <hr>
 
+### isOneOf(data, includeArray)
+
+**Checks if the data is one of the array values**
+
+```Javascript
+let isOneOf = validator.isOneOf("Pewdiepie", ['Casey','David','Pewdiepie']);
+console.log('isOneOf', isOneOf); // true
+```
+
+<hr>
+
+### isEqualTo(data, value)
+
+**just like === operator**
+
+```Javascript
+let isEqualTo = validator.isEqualTo('David', 'David');
+console.log('isEqualTo', isEqualTo); // true
+```
+
+<hr>
+
 ### checkStringLength(str [, min, max])
 
 **check if string is empty**
@@ -157,7 +180,7 @@ max (int): default: null (for any max length)<br>
 
 **examples:**
 
-```
+```javascript
 validator.multiple(validator.isAlphaNum("test123"), validator.isAlpha("test")); // true
 ```
 
@@ -176,7 +199,7 @@ validator.multiple(validator.isAlphaNum("test123"), validator.isAlpha("test")); 
 
 **examples:**
 
-```
+```javascript
 validator.validate( {valid: validator.isAlpha, data: {value: "Test", options: {min: 3}}, name: 'firstName', required: true} );
 // {status: true}
 
