@@ -186,23 +186,39 @@ validator.multiple(validator.isAlphaNum("test123"), validator.isAlpha("test")); 
 
 <hr>
 
-### validate(...dataToVerify)
+### validate({})
 
-**data: one or multiple objects**
-**every object contains: {valid: validator, data: {value: varData, options: {}, name: 'str', required: true}}**
+**data: object**
+**the object keys contains: {value: dataToVerify, valid: validator [,required: false]}**
 
-**valid (validator): the validator function**
 **value (any): the data to validate**
-**options (object): the validator options**
+**valid (validator): the validator function with parameters**
+**required (boolean): is the parameter required default false (optional)**
 
-**returns object {status: true|false [,err: 'err msg']}**
+**returns object {status: true|false [,paramName: 'paramName', err: 'err msg']}**
 
 **examples:**
 
 ```javascript
-validator.validate( {valid: validator.isAlpha, data: {value: "Test", options: {min: 3}}, name: 'firstName', required: true} );
-// {status: true}
+// optional: changing the error messages
+validator.errMsgs.isInvalid = '$ Is Wrong !';
 
-validator.validate( {valid: validator.isAlpha, data: {value: "David3", name: 'FirstName', required: true} );
-// {status: false, err: 'FirstName is Invalid'}
+let trueValidate = validator.validate({
+	'firstName': {value: 'David', valid: validator.isAlpha('David', {min: 3}), required: true},
+	'age': {value: 25, valid: validator.isInt(25, {min: 1, max: 100}), required: true}
+});
+console.log('trueValidate', trueValidate); // {status: true}
+
+// this one with a parameter that is not required so it can be undefined and still true
+let trueValidate2 = validator.validate({
+	'firstName': {value: 'David', valid: validator.isAlpha('David', {min: 3}), required: true},
+	'age': {value: undefined, valid: validator.isInt(undefined, {min: 1, max: 100})}
+});
+console.log('trueValidate2', trueValidate2); // {status: true}
+
+let falseValidate = validator.validate({
+	'firstName': {value: 'David3', valid: validator.isAlpha('David3', {min: 3, required: true})},
+	'age': {value: 25, valid: validator.isInt(25, {min: 1, max: 100, required: true})}
+});
+console.log('falseValidate', falseValidate); // {status: false, paramName: 'firstName, err: 'firstName is Wrong !'}
 ```

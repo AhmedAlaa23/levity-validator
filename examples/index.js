@@ -50,8 +50,24 @@ console.log(isAllValid); // true
 // optional: changing the error messages
 validator.errMsgs.isInvalid = '$ Is Wrong !';
 
-let validate = validator.validate( {valid: validator.isAlpha, data: {value: "Test", options: {min: 3}}, name: 'firstName', required: true} );
-console.log(validate); // true
+let trueValidate = validator.validate({
+	'firstName': {value: 'David', valid: validator.isAlpha('David', {min: 3}), required: true},
+	'age': {value: 25, valid: validator.isInt(25, {min: 1, max: 100}), required: true}
+});
+console.log('trueValidate', trueValidate); // {status: true}
+
+// this one with a paramter that is not required so it can be undefined and still true
+let trueValidate2 = validator.validate({
+	'firstName': {value: 'David', valid: validator.isAlpha('David', {min: 3}), required: true},
+	'age': {value: undefined, valid: validator.isInt(undefined, {min: 1, max: 100})}
+});
+console.log('trueValidate2', trueValidate2); // {status: true}
+
+let falseValidate = validator.validate({
+	'firstName': {value: 'David3', valid: validator.isAlpha('David3', {min: 3, required: true})},
+	'age': {value: 25, valid: validator.isInt(25, {min: 1, max: 100, required: true})}
+});
+console.log('falseValidate', falseValidate); // {status: false, param: 'firstName, err: 'firstName is Wrong !'}
 
 // // ====================== To-DO
 
