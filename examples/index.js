@@ -4,7 +4,10 @@ let isValid = validator.isAlphaNum("Test1234");
 // console.log(isValid); // true
 
 let isAlphaNumSpace = validator.isAlphaNumSpace("User name 3", {min: 3, max: 255, locale: '*'});
-console.log('isAlphaNumSpace', isAlphaNumSpace); // true
+// console.log('isAlphaNumSpace', isAlphaNumSpace); // true
+
+let isNum = validator.isNum("240", {min: -1000, max: 10000});
+console.log('isNum', isNum); // false
 
 // ==========================
 
