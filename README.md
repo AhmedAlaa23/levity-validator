@@ -191,9 +191,11 @@ validator.multiple(validator.isAlphaNum("test123"), validator.isAlpha("test")); 
 **data: object**
 **the object keys contains: {value: dataToVerify, valid: validator [,required: false]}**
 
+**valid (validator): the validator function**
 **value (any): the data to validate**
-**valid (validator): the validator function with parameters**
-**required (boolean): is the parameter required default false (optional)**
+**params (any): the validator function params (second argument)**
+**required (boolean): is the parameter required, default false (optional)**
+**convertStrToNum (boolean): if the value is string and can be converted to number then it will convert it, default false (optional)**
 
 **returns object {status: true|false [,paramName: 'paramName', err: 'err msg']}**
 
@@ -204,21 +206,29 @@ validator.multiple(validator.isAlphaNum("test123"), validator.isAlpha("test")); 
 validator.errMsgs.isInvalid = '$ Is Wrong !';
 
 let trueValidate = validator.validate({
-	'firstName': {value: 'David', valid: validator.isAlpha('David', {min: 3}), required: true},
-	'age': {value: 25, valid: validator.isInt(25, {min: 1, max: 100}), required: true}
+	firstName: {valid: validator.isAlpha, value: 'David', params: {min: 3}, required: true},
+	age: {valid: validator.isInt, value: 25, params: {min: 1, max: 100}}
 });
-console.log('trueValidate', trueValidate); // {status: true}
+// console.log(trueValidate); // {status: true}
 
 // this one with a parameter that is not required so it can be undefined and still true
 let trueValidate2 = validator.validate({
-	'firstName': {value: 'David', valid: validator.isAlpha('David', {min: 3}), required: true},
-	'age': {value: undefined, valid: validator.isInt(undefined, {min: 1, max: 100})}
+	firstName: {valid: validator.isAlpha, value: 'David', params: {min: 3}, required: true},
+	age: {valid: validator.isInt, value: undefined, params: {min: 1, max: 100}}	
 });
-console.log('trueValidate2', trueValidate2); // {status: true}
+// console.log('trueValidate2', trueValidate2); // {status: true}
+
+// this one with a parameter age that can be converted form str to number and still true
+let trueValidate3 = validator.validate({
+	firstName: {valid: validator.isAlpha, value: 'David', params: {min: 3}, required: true},
+	age: {valid: validator.isInt, value: '25', params: {min: 1, max: 100}, convertStrToNum: true}
+});
+// console.log('trueValidate2', trueValidate2); // {status: true}
 
 let falseValidate = validator.validate({
-	'firstName': {value: 'David3', valid: validator.isAlpha('David3', {min: 3, required: true})},
-	'age': {value: 25, valid: validator.isInt(25, {min: 1, max: 100, required: true})}
+	firstName: {valid: validator.isAlpha, value: 'David4', params: {min: 3}, required: true},
+	age: {valid: validator.isInt, value: '25', params: {min: 1, max: 100}, convertStrToNum: true}
 });
-console.log('falseValidate', falseValidate); // {status: false, paramName: 'firstName, err: 'firstName is Wrong !'}
+// console.log('falseValidate', falseValidate); // {status: false, param: 'firstName, err: 'firstName is Wrong !'}
+
 ```
