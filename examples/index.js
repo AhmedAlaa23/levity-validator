@@ -29,6 +29,10 @@ let isOneOf = validator.isOneOf("Pewdiepie", ['Casey','David','Pewdiepie']);
 let isEqualTo = validator.isEqualTo('David', 'David');
 // console.log('isEqualTo', isEqualTo); // true
 
+// check if it's an array and it's length
+let isArray = validator.isArray([1,2,3], {min: 1, max: 3});
+// console.log('isArray', isArray); // true
+
 // ========================= high order validators
 
 let isValidUsername = validator.isUsername("David_123");

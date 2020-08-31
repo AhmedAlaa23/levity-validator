@@ -167,6 +167,17 @@ console.log('isEqualTo', isEqualTo); // true
 
 <hr>
 
+### isArray(data, [,options])
+
+**Check it data is array and checks it's length**
+
+```Javascript
+let isArray = validator.isArray([1,2,3], {min: 1, max: 5});
+console.log('isArray', isArray); // true
+```
+
+<hr>
+
 ### checkStringLength(str [, min, max])
 
 **check if string is empty**
