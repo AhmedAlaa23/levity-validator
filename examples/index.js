@@ -33,6 +33,14 @@ let isEqualTo = validator.isEqualTo('David', 'David');
 let isArray = validator.isArray([1,2,3], {min: 1, max: 3});
 // console.log('isArray', isArray); // true
 
+// check if every item in the array is less than 5
+let isArrayEvery = validator.isArrayEvery([1,2,3,4], (item)=>item<5);
+// console.log('isArrayEvery', isArrayEvery); // true
+
+// check if any item of the array is equal to 3
+let isArraySome = validator.isArraySome([1,2,3,4], (item)=>item==3);
+console.log('isArraySome', isArraySome); // true
+
 // ========================= high order validators
 
 let isValidUsername = validator.isUsername("David_123");

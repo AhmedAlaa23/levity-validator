@@ -178,6 +178,28 @@ console.log('isArray', isArray); // true
 
 <hr>
 
+### isArrayEvery(array, conditionFunction)
+
+**Check if every item in the array meet the condition function**
+
+```Javascript
+let isArrayEvery = validator.isArrayEvery([1,2,3,4], (item)=>item<5);
+console.log('isArrayEvery', isArrayEvery); // true
+```
+
+<hr>
+
+### isArraySome(array, conditionFunction)
+
+**Check if any one of the array items meets the condition function**
+
+```Javascript
+let isArraySome = validator.isArraySome([1,2,3,4], (item)=>item==3);
+console.log('isArraySome', isArraySome); // true
+```
+
+<hr>
+
 ### checkStringLength(str [, min, max])
 
 **check if string is empty**
