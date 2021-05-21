@@ -21,7 +21,7 @@ let isValidPattern = validator.isPattern("test","^[a-zA-Z]+$");
 let isValidText = validator.isText("Hello اهلا 😀", {min: 2});
 // console.log('isValidText', isValidText); // true
 
-let isValidText2 = validator.isText("", {min: 0});
+let isValidText2 = validator.isText("", {max: 255});
 // console.log('isValidText2', isValidText2); // true
 
 // is one of array values (case sensitive)
